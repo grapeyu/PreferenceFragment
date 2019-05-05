@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="Inline_settings"
+        android:title="In-line preferences">
+        <CheckBoxPreference
+            android:key="checkbox"
+            android:summary="This is a checkbox"
+            android:title="Checkbox preference"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="Dialog_settings"
+        android:title="Dialog-based preferences">
+        <EditTextPreference
+            android:key="editText"
+            android:title="Edit text preference"
+            android:summary="An example that uses an edit text dialog"
+            android:dialogTitle="Enter your favorite animal"/>
+
+        <ListPreference
+            android:key="list"
+            android:title="List preferences"
+            android:dialogTitle="choose one"
+            android:summary="An example that uses a list dialog"
+            android:entries="@array/entries_list_preference"
+            android:entryValues="@array/entryValues_list_preference"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="Launch_settings"
+        android:title="Launch preferences">
+        <PreferenceScreen
+            android:key="screen preference"
+            android:summary="shows another screen of preferences"
+            android:title="Screen preference" >
+            <!-- 你可以在这里放置更多的首选项内容，将被在下一个页面呈现出来 -->
+            <CheckBoxPreference
+                android:key="next screen checkbox preference"
+                android:summary="Preference that is on the next screen but same hierarchy"
+                android:title="Toggle preference" />
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="intent_preference"
+            android:summary="launches an Activity from an Intent"
+            android:title="intent preference" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.baidu.com" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="Attributes_settings"
+        android:title="Preference attributes">
+        <CheckBoxPreference
+            android:key="parent checkbox preference"
+            android:summary="This is visually a parent"
+            android:title="parent checkbox preference" />
+
+        <CheckBoxPreference
+            android:dependency="parent checkbox preference"
+            android:key="child_checkbox_preference"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:summary="This is visually a child"
+            android:title="parent checkbox preference" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
